@@ -1,0 +1,654 @@
+@use "../scss/variables" as v;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS Custom Properties — Light / Dark Mode
+   ============================================================ */
+
+:root {
+  /* Backgrounds */
+  --bg-body: #{v.$white};
+  --bg-card: #{v.$white};
+  --bg-section: #{v.$gray-50};
+  --bg-section-alt: #{v.$primary-50};
+  --bg-hero: #{v.$brand-secondary};
+
+  /* Text */
+  --text-heading: #{v.$brand-secondary};
+  --text-body: #{v.$gray-800};
+  --text-muted: #{v.$gray-500};
+  --text-inverse: #{v.$white};
+  --text-link: #{v.$brand-primary};
+
+  /* Borders */
+  --border-color: #{v.$gray-200};
+  --border-light: #{v.$gray-100};
+
+  /* Shadows */
+  --shadow-color: rgba(7, 59, 94, 0.06);
+  --shadow-color-hover: rgba(7, 59, 94, 0.12);
+
+  /* Footer — light mode gets a light gray bg */
+  --bg-footer: #F1F5F9;
+
+  /* Fonts */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+
+  /* Dark-section tokens (Hero, DoctorProfile, HowItWorks, CTA, Footer) */
+  --ds-bg-card: #ffffff;
+  --ds-bg-card-hover: #f0f7ff;
+  --ds-border: #b8d0e8;
+  --ds-border-hover: #8fb5d4;
+  --ds-text: #{v.$brand-secondary};
+  --ds-text-body: #1a3a56;
+  --ds-text-muted: #3d607d;
+  --ds-text-faint: #5a7d9a;
+  --ds-divider: #c5d5e4;
+  --ds-glass-bg: rgba(255, 255, 255, 0.85);
+  --ds-glass-border: #b8d0e8;
+}
+
+.dark {
+  --bg-body: #0c1821;
+  --bg-card: #132633;
+  --bg-section: #0f1f2b;
+  --bg-section-alt: #0e2438;
+  --bg-hero: #041018;
+  --bg-footer: #060e14;
+
+  --text-heading: #e4f0fb;
+  --text-body: #c5d5e4;
+  --text-muted: #7a97b0;
+  --text-inverse: #0c1821;
+  --text-link: #{v.$brand-primary};
+
+  --border-color: #1c3347;
+  --border-light: #162a3a;
+
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --shadow-color-hover: rgba(0, 0, 0, 0.4);
+
+  /* Dark-section tokens (dark mode) */
+  --ds-bg-card: rgba(255, 255, 255, 0.04);
+  --ds-bg-card-hover: rgba(255, 255, 255, 0.07);
+  --ds-border: rgba(255, 255, 255, 0.08);
+  --ds-border-hover: rgba(255, 255, 255, 0.12);
+  --ds-text: rgba(255, 255, 255, 0.9);
+  --ds-text-body: rgba(255, 255, 255, 0.75);
+  --ds-text-muted: rgba(255, 255, 255, 0.55);
+  --ds-text-faint: rgba(255, 255, 255, 0.35);
+  --ds-divider: rgba(255, 255, 255, 0.06);
+  --ds-glass-bg: rgba(255, 255, 255, 0.04);
+  --ds-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   BASE — wrapped in @layer base so Tailwind utilities can
+   override these values when explicitly set on elements.
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: v.$font-size-md;
+    line-height: v.$line-height-relaxed;
+    color: var(--text-body);
+    background-color: var(--bg-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    line-height: v.$line-height-tight;
+    font-weight: 400;
+  }
+
+  a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color 0.25s;
+
+    &:hover {
+      color: v.$primary-600;
+    }
+
+    &:focus-visible {
+      outline: 2px solid v.$brand-primary;
+      outline-offset: 2px;
+      border-radius: v.$radius-sm;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ============================================================
+   SKIP LINK
+   ============================================================ */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: v.$brand-secondary;
+  color: #fff;
+  padding: 12px 24px;
+  z-index: 9999;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/* ============================================================
+   SWIPER OVERRIDES
+   ============================================================ */
+
+.swiper-pagination-bullet {
+  background: var(--text-muted) !important;
+  opacity: 0.4 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: all 0.3s !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: v.$brand-primary !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: v.$brand-primary !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: var(--bg-card) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px var(--shadow-color) !important;
+
+  &::after {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+  }
+}
+
+/* ============================================================
+   FANCYBOX OVERRIDES
+   ============================================================ */
+
+.fancybox__container {
+  --fancybox-bg: rgba(0, 0, 0, 0.7);
+}
+
+.fancybox__content {
+  border-radius: v.$radius-xl !important;
+  padding: 0 !important;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   SECTION LABEL
+   ============================================================ */
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: v.$brand-primary;
+  margin-bottom: 12px;
+}
+
+/* ============================================================
+   HERO PREMIUM ANIMATIONS
+   ============================================================ */
+
+/* Grid pattern */
+.hero-grid-pattern {
+  background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Floating medical icons */
+@keyframes heroFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(20px, -30px) rotate(5deg); }
+  50% { transform: translate(-15px, -15px) rotate(-3deg); }
+  75% { transform: translate(10px, 20px) rotate(2deg); }
+}
+
+.hero-float-icon {
+  animation: heroFloat 18s ease-in-out infinite;
+  color: #3CA8F0;
+}
+
+/* Gradient orbs */
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.hero-gradient-orb {
+  animation: orbDrift 12s ease-in-out infinite;
+}
+
+/* Line draw — curved flowing lines */
+@keyframes lineDraw {
+  0% { stroke-dashoffset: 2000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.hero-line-draw {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: lineDraw 8s ease-in-out infinite alternate;
+}
+
+/* Horizontal smooth travel lines */
+@keyframes hLineSlide {
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(110%); }
+}
+
+.hero-hline {
+  animation: hLineSlide var(--dur, 14s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Vertical smooth travel lines */
+@keyframes vLineSlide {
+  0%   { transform: translateY(-110%); }
+  100% { transform: translateY(110%); }
+}
+
+.hero-vline {
+  animation: vLineSlide var(--dur, 16s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Bento card entrance */
+.bento-card {
+  animation: bentoIn 0.8s ease-out both;
+}
+
+@for $i from 1 through 6 {
+  .bento-card:nth-child(#{$i}) {
+    animation-delay: #{0.6 + $i * 0.1}s;
+  }
+}
+
+@keyframes bentoIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Custom cursor — native cursor hidden only when canvas is active */
+
+/* ============================================================
+   PREMIUM SECTION DIVIDERS
+   ============================================================ */
+
+.section-gradient-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, v.$brand-primary 30%, v.$accent-teal 70%, transparent 100%);
+  opacity: 0.15;
+}
+
+/* ============================================================
+   SECTION-SPECIFIC PREMIUM CARD STYLES
+   ============================================================ */
+
+/* ValueProps — Floating panel */
+.vp-panel {
+  box-shadow:
+    0 4px 40px rgba(7,59,94,0.08),
+    0 0 0 1px rgba(7,59,94,0.06) inset;
+}
+.dark .vp-panel {
+  box-shadow:
+    0 4px 40px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.03) inset;
+}
+
+/* WhoWeHelp — Gradient border cards */
+.audience-gradient-card {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 20px;
+  padding: 2px;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, transparent, transparent);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: background 0.4s ease;
+  }
+
+  &:hover::before {
+    background: linear-gradient(135deg, v.$brand-primary, v.$accent-teal);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(60,168,240,0.12);
+  }
+}
+
+/* Services — Icon glow cards */
+.service-glow-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: v.$brand-primary;
+    transition: height 0.4s ease;
+    border-radius: 0 4px 4px 0;
+  }
+
+  &:hover {
+    border-color: v.$brand-primary;
+    transform: translateX(4px);
+    box-shadow: -4px 0 20px rgba(60,168,240,0.1);
+
+    &::after { height: 100%; }
+  }
+}
+
+/* Assessments — Stepped card */
+.assess-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.4s ease;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, v.$brand-primary, v.$accent-teal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover::before { transform: scaleX(1); }
+  &:hover { box-shadow: 0 8px 32px var(--shadow-color-hover); }
+}
+
+/* Telehealth — Slide accent bar cards */
+.tele-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, v.$accent-teal, v.$brand-primary);
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--shadow-color-hover);
+    &::before { width: 80%; }
+  }
+}
+
+/* About specialist — Shimmer effect */
+.specialist-shimmer {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 40%,
+      rgba(60,168,240,0.03) 50%,
+      transparent 60%
+    );
+    animation: shimmer 6s ease-in-out infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Articles — Magazine-style cards */
+.article-mag-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(60,168,240,0.04));
+    transition: all 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: 0 20px 40px var(--shadow-color-hover);
+    border-color: v.$brand-primary;
+
+    &::before {
+      background: linear-gradient(135deg, transparent 40%, rgba(60,168,240,0.08));
+    }
+  }
+}
+
+/* Contact form — Neumorphic style */
+.contact-form-card {
+  background: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 8px 8px 24px var(--shadow-color), -4px -4px 16px rgba(255,255,255,0.5);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 12px 12px 32px var(--shadow-color-hover), -6px -6px 20px rgba(255,255,255,0.6);
+  }
+}
+.dark .contact-form-card {
+  box-shadow: 8px 8px 24px rgba(0,0,0,0.4), -4px -4px 16px rgba(255,255,255,0.02);
+  &:hover {
+    box-shadow: 12px 12px 32px rgba(0,0,0,0.5), -6px -6px 20px rgba(255,255,255,0.03);
+  }
+}
+
+/* Community — Map-accent card */
+.community-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(15,163,177,0.08), transparent 70%);
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px var(--shadow-color-hover);
+    &::before { width: 200px; height: 200px; }
+  }
+}
+
+/* Premium button — icon slide + shimmer */
+.btn-icon-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+
+  .btn-icon {
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover .btn-icon {
+    transform: translateX(4px);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.1) 50%,
+      transparent 100%
+    );
+    transition: left 0.6s ease;
+  }
+
+  &:hover::after {
+    left: 100%;
+  }
+}
+
+/* Testimonials — Elevated quote cards */
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.4s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 3px;
+    background: linear-gradient(90deg, v.$brand-primary, v.$accent-teal);
+    border-radius: 0 0 3px 3px;
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px var(--shadow-color-hover);
+    &::before { transform: scaleX(1); }
+  }
+}
+
+/* FAQ — Accordion items */
+.faq-item {
+  transition: all 0.3s ease;
+}
+
+/* How it works steps — Animated connector */
+.step-card {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 2px;
+    height: calc(100% + 24px);
+    background: linear-gradient(to bottom, v.$brand-primary, transparent);
+    opacity: 0.15;
+  }
+  &:last-child::before { display: none; }
+}

@@ -1,0 +1,307 @@
+// ============================================================
+// Straits Geriatrics — SCSS Variables
+// Brand Color System & Design Tokens
+// ============================================================
+
+// ------------------------------------------------------------
+// 1. BRAND COLORS (Extracted from live site)
+// ------------------------------------------------------------
+
+// Primary Blue Family
+$brand-primary:         #3CA8F0;  // Bright blue — main brand accent
+$brand-primary-light:   #34BDEC;  // Sky blue — lighter variant
+$brand-primary-dark:    #4464AC;  // Royal blue — darker variant
+
+// Secondary / Dark Family
+$brand-secondary:       #073B5E;  // Deep navy — headings, strong text
+$brand-secondary-alt:   #2A3D69;  // Muted navy — alternate dark
+
+// ------------------------------------------------------------
+// 2. EXTENDED PALETTE (Derived from brand)
+// ------------------------------------------------------------
+
+// Primary shades
+$primary-50:            #EBF6FE;  // Lightest tint — backgrounds
+$primary-100:           #C8E7FC;  // Very light — hover backgrounds
+$primary-200:           #94D1F9;  // Light — borders, dividers
+$primary-300:           #5FBCF5;  // Medium light
+$primary-400:           #3CA8F0;  // Base primary
+$primary-500:           #2B8FD4;  // Slightly deeper
+$primary-600:           #1F76B8;  // Darker — active states
+$primary-700:           #155D9B;  // Dark — focus rings
+$primary-800:           #0E4478;  // Very dark
+$primary-900:           #073B5E;  // Deepest — maps to brand-secondary
+
+// Secondary / Navy shades
+$secondary-50:          #E8ECF3;
+$secondary-100:         #C5CCE0;
+$secondary-200:         #9EA9CA;
+$secondary-300:         #7686B4;
+$secondary-400:         #576BA4;
+$secondary-500:         #4464AC;  // Maps to brand-primary-dark
+$secondary-600:         #3A5493;
+$secondary-700:         #2A3D69;  // Maps to brand-secondary-alt
+$secondary-800:         #1C2A4A;
+$secondary-900:         #0F1A30;
+
+// ------------------------------------------------------------
+// 3. ACCENT / CTA COLORS
+// ------------------------------------------------------------
+
+$accent-teal:           #0FA3B1;  // Teal — alternative accent
+$accent-teal-light:     #B8E8EB;  // Teal tint
+$accent-teal-dark:      #087B86;  // Teal shade
+
+$accent-gold:           #C8962E;  // Warm gold — premium CTAs
+$accent-gold-light:     #F5E6C4;  // Gold tint
+$accent-gold-dark:      #9A7322;  // Gold shade
+
+$accent-coral:          #E86F51;  // Warm coral — urgent CTAs
+$accent-coral-light:    #FDDDD5;  // Coral tint
+$accent-coral-dark:     #C4513A;  // Coral shade
+
+// ------------------------------------------------------------
+// 4. NEUTRAL / GRAY SCALE
+// ------------------------------------------------------------
+
+$white:                 #FFFFFF;
+$gray-50:               #F8F9FA;  // Off-white — page backgrounds
+$gray-100:              #F1F3F5;  // Light — section backgrounds
+$gray-200:              #E2E6EA;  // Light — borders
+$gray-300:              #CED4DA;  // Medium — disabled borders
+$gray-400:              #ADB5BD;  // Medium — placeholder text
+$gray-500:              #868E96;  // Medium — secondary text
+$gray-600:              #656D78;  // Dark — body text alternate
+$gray-700:              #495057;  // Dark — body text
+$gray-800:              #343A40;  // Very dark — headings
+$gray-900:              #1A1E23;  // Near black
+$black:                 #000000;
+
+// ------------------------------------------------------------
+// 5. SEMANTIC COLORS
+// ------------------------------------------------------------
+
+// Success
+$success:               #2E9E5A;
+$success-light:         #D4EDDA;
+$success-dark:          #1E7A42;
+
+// Warning
+$warning:               #E6A817;
+$warning-light:         #FFF3CD;
+$warning-dark:          #C08C10;
+
+// Error / Danger
+$error:                 #DC3545;
+$error-light:           #F8D7DA;
+$error-dark:            #B02A37;
+
+// Info
+$info:                  #3CA8F0;  // Reuses primary
+$info-light:            #D1ECF1;
+$info-dark:             #1F76B8;
+
+// ------------------------------------------------------------
+// 6. ROLE-BASED / SEMANTIC ASSIGNMENTS
+// ------------------------------------------------------------
+
+// Backgrounds
+$bg-body:               $white;
+$bg-surface:            $gray-50;
+$bg-section:            $gray-100;
+$bg-section-alt:        $primary-50;
+$bg-hero:               $brand-secondary;
+$bg-footer:             $secondary-900;
+$bg-overlay:            rgba($black, 0.6);
+
+// Text
+$text-primary:          $gray-800;        // Main body text
+$text-secondary:        $gray-600;        // Supporting text
+$text-muted:            $gray-500;        // De-emphasized text
+$text-heading:          $brand-secondary;  // Headings
+$text-inverse:          $white;           // Text on dark backgrounds
+$text-link:             $brand-primary;   // Link color
+$text-link-hover:       $primary-600;     // Link hover
+
+// Borders
+$border-light:          $gray-200;
+$border-default:        $gray-300;
+$border-dark:           $gray-400;
+$border-focus:          $brand-primary;
+
+// ------------------------------------------------------------
+// 7. BUTTON COLORS
+// ------------------------------------------------------------
+
+// Primary Button
+$btn-primary-bg:        $brand-primary;
+$btn-primary-text:      $white;
+$btn-primary-hover:     $primary-600;
+$btn-primary-active:    $primary-700;
+$btn-primary-disabled:  $gray-300;
+
+// Secondary Button
+$btn-secondary-bg:      transparent;
+$btn-secondary-text:    $brand-primary;
+$btn-secondary-border:  $brand-primary;
+$btn-secondary-hover:   $primary-50;
+$btn-secondary-active:  $primary-100;
+
+// CTA / Accent Button
+$btn-cta-bg:            $accent-gold;
+$btn-cta-text:          $white;
+$btn-cta-hover:         $accent-gold-dark;
+$btn-cta-active:        #7F5F1B;
+
+// Dark Button (on light backgrounds)
+$btn-dark-bg:           $brand-secondary;
+$btn-dark-text:         $white;
+$btn-dark-hover:        $secondary-700;
+$btn-dark-active:       $secondary-800;
+
+// ------------------------------------------------------------
+// 8. TYPOGRAPHY
+// ------------------------------------------------------------
+
+// Font Families
+$font-primary:          'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-heading:          'Playfair Display', 'Georgia', serif;
+$font-mono:             'JetBrains Mono', 'Fira Code', monospace;
+
+// Font Sizes (rem-based for accessibility)
+$font-size-xs:          0.75rem;    // 12px
+$font-size-sm:          0.875rem;   // 14px
+$font-size-base:        1rem;       // 16px
+$font-size-md:          1.125rem;   // 18px — default body for elderly readability
+$font-size-lg:          1.25rem;    // 20px
+$font-size-xl:          1.5rem;     // 24px
+$font-size-2xl:         1.875rem;   // 30px
+$font-size-3xl:         2.25rem;    // 36px
+$font-size-4xl:         3rem;       // 48px
+$font-size-5xl:         3.75rem;    // 60px
+
+// Font Weights
+$font-weight-light:     300;
+$font-weight-regular:   400;
+$font-weight-medium:    500;
+$font-weight-semibold:  600;
+$font-weight-bold:      700;
+
+// Line Heights
+$line-height-tight:     1.25;
+$line-height-snug:      1.375;
+$line-height-normal:    1.5;
+$line-height-relaxed:   1.625;  // Better for elderly readability
+$line-height-loose:     1.75;
+
+// Letter Spacing
+$letter-spacing-tight:  -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide:   0.025em;
+$letter-spacing-wider:  0.05em;
+
+// ------------------------------------------------------------
+// 9. SPACING SCALE
+// ------------------------------------------------------------
+
+$space-0:               0;
+$space-1:               0.25rem;    // 4px
+$space-2:               0.5rem;     // 8px
+$space-3:               0.75rem;    // 12px
+$space-4:               1rem;       // 16px
+$space-5:               1.25rem;    // 20px
+$space-6:               1.5rem;     // 24px
+$space-8:               2rem;       // 32px
+$space-10:              2.5rem;     // 40px
+$space-12:              3rem;       // 48px
+$space-16:              4rem;       // 64px
+$space-20:              5rem;       // 80px
+$space-24:              6rem;       // 96px
+$space-32:              8rem;       // 128px
+
+// Section Spacing
+$section-padding-sm:    $space-12;
+$section-padding-md:    $space-16;
+$section-padding-lg:    $space-24;
+
+// ------------------------------------------------------------
+// 10. LAYOUT
+// ------------------------------------------------------------
+
+// Container
+$container-sm:          640px;
+$container-md:          768px;
+$container-lg:          1024px;
+$container-xl:          1200px;
+$container-2xl:         1400px;
+$container-max:         $container-xl;
+$container-padding:     $space-6;
+
+// Breakpoints
+$breakpoint-xs:         0;
+$breakpoint-sm:         576px;
+$breakpoint-md:         768px;
+$breakpoint-lg:         992px;
+$breakpoint-xl:         1200px;
+$breakpoint-2xl:        1400px;
+
+// Z-Index Scale
+$z-dropdown:            1000;
+$z-sticky:              1020;
+$z-fixed:               1030;
+$z-offcanvas-backdrop:  1040;
+$z-offcanvas:           1045;
+$z-modal-backdrop:      1050;
+$z-modal:               1055;
+$z-popover:             1070;
+$z-tooltip:             1080;
+$z-toast:               1090;
+
+// ------------------------------------------------------------
+// 11. BORDERS & RADIUS
+// ------------------------------------------------------------
+
+$border-width:          1px;
+$border-width-thick:    2px;
+
+$radius-sm:             0.25rem;    // 4px
+$radius-md:             0.5rem;     // 8px
+$radius-lg:             0.75rem;    // 12px
+$radius-xl:             1rem;       // 16px
+$radius-2xl:            1.5rem;     // 24px
+$radius-full:           9999px;     // Pill shape
+
+// ------------------------------------------------------------
+// 12. SHADOWS
+// ------------------------------------------------------------
+
+$shadow-xs:             0 1px 2px rgba($black, 0.05);
+$shadow-sm:             0 1px 3px rgba($black, 0.1), 0 1px 2px rgba($black, 0.06);
+$shadow-md:             0 4px 6px rgba($black, 0.07), 0 2px 4px rgba($black, 0.06);
+$shadow-lg:             0 10px 15px rgba($black, 0.1), 0 4px 6px rgba($black, 0.05);
+$shadow-xl:             0 20px 25px rgba($black, 0.1), 0 8px 10px rgba($black, 0.04);
+$shadow-2xl:            0 25px 50px rgba($black, 0.15);
+$shadow-inner:          inset 0 2px 4px rgba($black, 0.06);
+$shadow-none:           none;
+
+// Card shadow
+$shadow-card:           0 2px 8px rgba($brand-secondary, 0.08);
+$shadow-card-hover:     0 8px 24px rgba($brand-secondary, 0.12);
+
+// ------------------------------------------------------------
+// 13. TRANSITIONS
+// ------------------------------------------------------------
+
+$transition-fast:       150ms ease;
+$transition-base:       250ms ease;
+$transition-slow:       350ms ease;
+$transition-slower:     500ms ease;
+
+// Specific transitions
+$transition-color:      color $transition-base;
+$transition-bg:         background-color $transition-base;
+$transition-border:     border-color $transition-base;
+$transition-shadow:     box-shadow $transition-base;
+$transition-transform:  transform $transition-base;
+$transition-opacity:    opacity $transition-base;
+$transition-all:        all $transition-base;

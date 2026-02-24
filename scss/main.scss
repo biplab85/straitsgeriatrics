@@ -1,0 +1,194 @@
+// ============================================================
+// Straits Geriatrics — Main SCSS Entry Point
+// ============================================================
+
+// Foundation
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================================
+// RESET & BASE
+// ============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;                  // 16px base
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @include body-text;
+  background-color: $bg-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+
+h1 { @include h1; }
+h2 { @include h2; }
+h3 { @include h3; }
+h4 { @include h4; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: $space-4;
+}
+
+p {
+  margin-bottom: $space-4;
+}
+
+a {
+  color: $text-link;
+  text-decoration: none;
+  transition: $transition-color;
+
+  &:hover {
+    color: $text-link-hover;
+  }
+
+  &:focus-visible {
+    outline: $border-width-thick solid $border-focus;
+    outline-offset: 2px;
+    border-radius: $radius-sm;
+  }
+}
+
+// ============================================================
+// LAYOUT
+// ============================================================
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section-padding;
+}
+
+.section--alt {
+  background-color: $bg-section;
+}
+
+.section--brand {
+  background-color: $bg-section-alt;
+}
+
+.section--dark {
+  background-color: $bg-hero;
+  color: $text-inverse;
+
+  h1, h2, h3, h4 {
+    color: $text-inverse;
+  }
+}
+
+// ============================================================
+// BUTTONS
+// ============================================================
+
+.btn {
+  @include btn-base;
+}
+
+.btn--primary {
+  @include btn-primary;
+}
+
+.btn--secondary {
+  @include btn-secondary;
+}
+
+.btn--cta {
+  @include btn-cta;
+}
+
+.btn--dark {
+  @include btn-dark;
+}
+
+.btn--lg {
+  padding: $space-4 $space-8;
+  font-size: $font-size-lg;
+}
+
+.btn--sm {
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+}
+
+// ============================================================
+// CARDS
+// ============================================================
+
+.card {
+  @include card;
+}
+
+.card--flat {
+  @include card-flat;
+}
+
+// ============================================================
+// FORMS
+// ============================================================
+
+.input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  @include input-base;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+label {
+  display: block;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+  margin-bottom: $space-2;
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
+
+.sr-only {
+  @include visually-hidden;
+}
+
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
+
+.text-primary   { color: $brand-primary; }
+.text-secondary { color: $brand-secondary; }
+.text-muted     { color: $text-muted; }
+.text-inverse   { color: $text-inverse; }
+
+.bg-white   { background-color: $white; }
+.bg-surface { background-color: $bg-surface; }
+.bg-primary { background-color: $brand-primary; }
+.bg-dark    { background-color: $brand-secondary; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}

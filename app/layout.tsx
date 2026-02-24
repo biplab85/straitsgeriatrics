@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: seoMetadata.title,
   description: seoMetadata.description,
   keywords: seoMetadata.keywords,
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: seoMetadata.ogTitle,
     description: seoMetadata.ogDescription,

@@ -1,9 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { faqContent, faqItems } from "@/data/content";
 
 function FaqAccordion({ item, isOpen, toggle }: { item: typeof faqItems[0]; isOpen: boolean; toggle: () => void }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    }
+  }, [isOpen]);
+
   return (
     <div className={`faq-item border border-border rounded-2xl transition-all duration-300 ${isOpen ? "bg-surface-card shadow-lg border-brand-primary/20" : "bg-transparent hover:border-brand-primary/15"}`}>
       <button
@@ -21,8 +30,9 @@ function FaqAccordion({ item, isOpen, toggle }: { item: typeof faqItems[0]; isOp
         </span>
       </button>
       <div
-        className="overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: isOpen ? "400px" : "0", opacity: isOpen ? 1 : 0 }}
+        ref={contentRef}
+        className="overflow-hidden transition-[max-height,opacity] duration-400 ease-[cubic-bezier(0.4,0,0.2,1)]"
+        style={{ maxHeight: isOpen ? `${height}px` : "0", opacity: isOpen ? 1 : 0 }}
       >
         <div className="px-6 pb-6">
           <p className="text-content-muted text-[0.9rem] leading-relaxed">{item.answer}</p>

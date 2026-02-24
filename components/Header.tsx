@@ -131,14 +131,6 @@ export default function Header() {
             </svg>
             {siteConfig.phone}
           </a>
-          <a
-            href="#contact"
-            onClick={closeMenu}
-            className="btn-icon-group w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-brand-primary text-white font-semibold rounded-full border-2 border-brand-primary hover:bg-transparent hover:text-brand-primary transition-all duration-300 min-h-[44px]"
-          >
-            <svg className="btn-icon w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
-            Book a Consultation
-          </a>
         </div>
       </div>
     </>

@@ -65,18 +65,41 @@ export default function Articles() {
         </div>
 
         {/* Disclaimer */}
-        <div className="reveal mt-10 text-center p-8 bg-gradient-to-br from-surface-card to-surface-section rounded-[20px] border border-border relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(60,168,240,0.05),transparent_60%)] pointer-events-none" />
-          <div className="relative z-10">
-            <h3 className="font-heading text-lg text-content-heading mb-2">{c.disclaimer.title}</h3>
-            <p className="text-content-muted text-[0.95rem] mb-5">{c.disclaimer.text}</p>
-            <a
-              href={c.disclaimer.cta.href}
-              className="btn-icon-group inline-flex items-center justify-center gap-2 px-7 py-3 bg-brand-primary text-white font-semibold rounded-full border-2 border-brand-primary hover:bg-transparent hover:text-brand-primary transition-all duration-300 min-h-[44px] shadow-[0_0_20px_rgba(60,168,240,0.2)] hover:shadow-[0_0_30px_rgba(60,168,240,0.3)]"
-            >
-              <svg className="btn-icon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
-              {c.disclaimer.cta.label}
-            </a>
+        <div className="DisclaimerContainer reveal mt-14 relative overflow-hidden rounded-2xl border border-brand-primary/15 dark:border-white/10">
+          {/* Background layers */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#eaf4fd] via-[#f0f8ff] to-[#e8f6f8] dark:from-brand-secondary/80 dark:via-[#062842] dark:to-[#07303d]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(60,168,240,0.12),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_left,rgba(60,168,240,0.08),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(15,163,177,0.08),transparent_50%)] dark:bg-[radial-gradient(ellipse_at_bottom_right,rgba(15,163,177,0.06),transparent_50%)]" />
+          {/* Decorative top accent line */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-primary/40 to-transparent" />
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-10 px-8 py-10 md:px-12">
+            {/* Icon */}
+            <div className="flex-shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-white/80 dark:bg-white/[0.06] border border-brand-primary/20 dark:border-white/10 shadow-lg dark:shadow-black/20 flex items-center justify-center">
+                <svg className="w-8 h-8 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 9v4M12 17h.01" />
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Text content */}
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="font-heading text-xl text-content-heading mb-1.5">{c.disclaimer.title}</h3>
+              <p className="text-content-muted text-[0.92rem] leading-relaxed">{c.disclaimer.text}</p>
+            </div>
+
+            {/* CTA */}
+            <div className="flex-shrink-0">
+              <a
+                href={c.disclaimer.cta.href}
+                className="btn-icon-group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-primary text-white font-semibold text-sm rounded-full border-2 border-brand-primary hover:bg-transparent hover:text-brand-primary transition-all duration-300 min-h-[44px] whitespace-nowrap shadow-[0_0_20px_rgba(60,168,240,0.2)] hover:shadow-[0_0_30px_rgba(60,168,240,0.3)]"
+              >
+                <svg className="btn-icon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+                {c.disclaimer.cta.label}
+              </a>
+            </div>
           </div>
         </div>
       </div>

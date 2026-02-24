@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, FormEvent } from "react";
-import { Fancybox } from "@fancyapps/ui";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { contactContent, siteConfig } from "@/data/content";
 import { IconMap } from "./Icons";
@@ -9,17 +8,27 @@ import { IconMap } from "./Icons";
 export default function Contact() {
   const c = contactContent;
   const [submitted, setSubmitted] = useState(false);
+  const fancyboxRef = useRef<typeof import("@fancyapps/ui").Fancybox | null>(null);
 
   useEffect(() => {
-    Fancybox.bind("[data-fancybox]", {});
-    return () => { Fancybox.destroy(); };
+    let cancelled = false;
+    import("@fancyapps/ui").then(({ Fancybox }) => {
+      if (cancelled) return;
+      fancyboxRef.current = Fancybox;
+      Fancybox.bind("[data-fancybox]", {});
+    }).catch(() => {});
+    return () => {
+      cancelled = true;
+      fancyboxRef.current?.destroy();
+    };
   }, []);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setSubmitted(true);
     // Show fancybox success modal
-    Fancybox.show([
+    fancyboxRef.current?.show([
       {
         src: "#success-modal",
         type: "inline",
@@ -27,7 +36,7 @@ export default function Contact() {
     ]);
     setTimeout(() => {
       setSubmitted(false);
-      (e.target as HTMLFormElement).reset();
+      form.reset();
     }, 4000);
   };
 

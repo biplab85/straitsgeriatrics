@@ -568,10 +568,14 @@
 }
 
 /* Premium button — icon slide + shimmer */
+@layer components {
+  .btn-icon-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
 .btn-icon-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   position: relative;
   overflow: hidden;
 
